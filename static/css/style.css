@@ -1,0 +1,563 @@
+:root {
+    --primary-color: #0066cc;
+    --primary-dark: #004d99;
+    --secondary-color: #ff6b6b;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #777;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f9fafc;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+h1 span {
+    color: var(--primary-color);
+}
+
+header p {
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.subheader {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Upload Section */
+.upload-section {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+.drop-area {
+    border: 2px dashed var(--medium-gray);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    cursor: pointer;
+}
+
+.drop-area.active {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 102, 204, 0.05);
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+.upload-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.upload-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.settings {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    background: var(--light-gray);
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.primary-btn:disabled {
+    background-color: var(--medium-gray);
+    cursor: not-allowed;
+}
+
+/* Results Section */
+.results-section {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+}
+
+.results-section h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary-dark);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-left-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.colors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.color-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.color-card:hover {
+    transform: translateY(-5px);
+}
+
+.color-preview {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+
+.percentage {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.color-info {
+    padding: 1rem;
+    background-color: white;
+}
+
+.color-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.color-values {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+.copy-btn:hover {
+    text-decoration: underline;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Features Section */
+.features-section {
+    text-align: center;
+    padding: 2rem;
+}
+
+.features-section h2 {
+    margin-bottom: 2rem;
+    color: var(--primary-dark);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.8rem 1.5rem;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--dark-gray);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--medium-gray);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.small-text {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .upload-section, .results-section, .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .drop-area {
+        min-height: 200px;
+        padding: 1rem;
+    }
+    
+    .colors-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .color-preview {
+        height: 100px;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .colors-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .secondary-btn {
+        width: 100%;
+    }
+}
+
+.code-with-copy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.code-with-copy span {
+    font-size: 0.9rem;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background-color: rgba(0, 102, 204, 0.1);
+}
+
+.copy-btn.copied {
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Updated styles for better alignment */
+.color-values {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Make sure the text doesn't wrap oddly */
+.color-values span {
+    white-space: nowrap;
+}
+
+/* Tooltip style (optional) */
+.copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background-color: rgba(0, 102, 204, 0.1);
+}
+
+.copy-btn.copied {
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+
+@media (max-width: 768px) {
+    .colors-container {
+        grid-template-columns: 1fr;  /* Force single column layout on mobile */
+    }
+    
+    .color-info {
+        padding: 16px;
+    }
+    
+    .color-values {
+        gap: 14px;  /* Increased spacing for more values */
+    }
+    
+    .copy-btn svg {
+        width: 22px;  /* Even larger icons on mobile */
+        height: 22px;
+    }
+    
+    .copy-btn {
+        padding: 8px;  /* Larger touch target */
+        margin-left: 5px;  /* Add some space */
+    }
+    
+    /* Improve text readability on mobile */
+    .code-with-copy span {
+        font-size: 0.85rem;  /* Slightly smaller text to fit CMYK values */
+        word-break: keep-all;  /* Keep color values intact */
+    }
+    
+    /* Better value layout on narrow screens */
+    .value {
+        padding: 8px 0;
+    }
+}
+
+/* Extra styling for CMYK values */
+@media (max-width: 480px) {
+    /* On very small screens, stack the labels and values */
+    .value {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .value span:first-child {
+        font-weight: 500;
+    }
+    
+    .code-with-copy {
+        width: 100%;
+        justify-content: space-between;
+    }
+}

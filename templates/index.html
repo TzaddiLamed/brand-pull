@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Pull - Essential Color Tool for Brand Consistency</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="A professional design tool for brand managers and graphic designers to maintain brand consistency through precise color extraction.">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Brand<span>Pull</span></h1>
+            <p>Extract and maintain consistent brand colors across all your designs</p>
+            <div class="subheader">
+                <p>The essential tool for brand managers and graphic designers</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div id="drop-area" class="drop-area">
+                    <img id="preview-image" src="{{ url_for('static', filename='img/placeholder.svg') }}" alt="Upload preview">
+                    <div class="upload-prompt">
+                        <p>Drag & drop a logo or brand asset</p>
+                        <label for="file-input" class="upload-btn">Browse Files</label>
+                        <input id="file-input" type="file" accept="image/*" hidden>
+                    </div>
+                </div>
+
+                <div class="settings">
+                    <div class="slider-container">
+                        <label for="color-count">Brand Colors to Extract: <span id="color-value">5</span></label>
+                        <input type="range" id="color-count" name="color-count" min="2" max="10" value="5">
+                    </div>
+                    <button id="extract-btn" class="primary-btn" disabled>Extract Brand Colors</button>
+                </div>
+            </section>
+
+            <section id="results-section" class="results-section hidden">
+                <h2>Brand Color Palette</h2>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing brand colors...</p>
+                </div>
+                <div id="colors-container" class="colors-container"></div>
+                <div class="action-buttons">
+                    <button id="download-btn" class="secondary-btn">Export Palette</button>
+                    <button id="reset-btn" class="secondary-btn">New Brand Asset</button>
+                </div>
+            </section>
+            
+            <section class="features-section">
+                <h2>Maintain Brand Consistency</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Brand Identity</h3>
+                        <p>Extract precise colors from logos and brand assets to maintain consistency across all marketing materials.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Color Analysis</h3>
+                        <p>Get exact HEX and RGB values with color proportions to create balanced, consistent designs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Cross-Platform</h3>
+                        <p>Ensure your brand colors remain consistent across web, print, and digital marketing materials.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Brand Stream: Professional Color Extraction Tool | <a href="https://github.com/TzaddiLamed/brand-pull" target="_blank">View on GitHub</a></p>
+            <p class="small-text">Created by <a href="https://jason-mc.net/" target="_blank">Jason McClendon</a></p>
+        </footer>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
